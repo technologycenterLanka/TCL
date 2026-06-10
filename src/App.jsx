@@ -1,5 +1,7 @@
+import MainLayout from "./layouts/MainLayout";
+
 function App() {
-  return <h1>Atlantic Bridge Exchange</h1>;
+  return <MainLayout />;
 }
 
 export default App;
