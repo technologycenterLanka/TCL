@@ -5,10 +5,102 @@ html {
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
+  background: #020617;
+  color: white;
+  overflow-x: hidden;
 }
 
+/* =========================
+   GRID BACKGROUND
+========================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+  background-size: 80px 80px;
+
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* =========================
+   GLOW PULSE (WORKING FIX)
+========================= */
+
+@keyframes glowPulse {
+  0% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0.15;
+  }
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 10s ease-in-out infinite;
+}
+
+.animate-glow-pulse-slow {
+  animation: glowPulse 14s ease-in-out infinite;
+}
+
+.animate-glow-pulse-slower {
+  animation: glowPulse 18s ease-in-out infinite;
+}
+
+/* =========================
+   FLOATING PARTICLES (SAFE)
+========================= */
+
+@keyframes floatParticle {
+  0% {
+    transform: translate(0px, 0px);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translate(15px, -60px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 0.2;
+  }
+}
+
+.animate-float {
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+/* GLOBAL */
 * {
   box-sizing: border-box;
+}
+@keyframes glowPulse {
+  0% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+  100% { opacity: 0.2; transform: scale(1); }
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 5s ease-in-out infinite;
+}
+
+.animate-glow-pulse-slow {
+  animation: glowPulse 8s ease-in-out infinite;
+}
+
+.animate-glow-pulse-slower {
+  animation: glowPulse 8s ease-in-out infinite;
 }
