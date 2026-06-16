@@ -68,19 +68,53 @@ const Contact = () => {
     email: "",
     message: initialMessage,
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    alert(
-      isQuoteRequest
-        ? "Quote request sent successfully!"
-        : "Message sent successfully!"
-    );
-    setForm({ name: "", email: "", message: initialMessage });
+    setIsLoading(true);
+    setError(null);
+    setSuccessMessage(null);
+
+    const apiUrl = import.meta.env.VITE_API_URL || '';
+
+    try {
+      const response = await fetch(`${apiUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: isQuoteRequest ? "Quote Request" : "General Inquiry",
+          message: form.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      setSuccessMessage(
+        isQuoteRequest
+          ? "Quote request sent successfully!"
+          : "Message sent successfully!"
+      );
+      setForm({ name: "", email: "", message: initialMessage });
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -164,6 +198,9 @@ const Contact = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
+            {error && <div className="rounded border border-red-500 bg-red-500/10 p-3 text-sm text-red-400">{error}</div>}
+            {successMessage && <div className="rounded border border-green-500 bg-green-500/10 p-3 text-sm text-green-400">{successMessage}</div>}
+
             <input
               type="text"
               name="name"
@@ -200,9 +237,10 @@ const Contact = () => {
 
             <button
               type="submit"
-              className="w-full rounded-lg bg-cyan-500 py-3 font-medium shadow-lg transition hover:bg-cyan-400 hover:shadow-cyan-500/40"
+              disabled={isLoading}
+              className={`w-full rounded-lg py-3 font-medium shadow-lg transition ${isLoading ? "bg-cyan-500/50 cursor-not-allowed" : "bg-cyan-500 hover:bg-cyan-400 hover:shadow-cyan-500/40"}`}
             >
-              {isQuoteRequest ? "Request Quote" : "Send Message"}
+              {isLoading ? "Sending..." : (isQuoteRequest ? "Request Quote" : "Send Message")}
             </button>
           </motion.form>
         </div>

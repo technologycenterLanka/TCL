@@ -9,6 +9,9 @@ const Login = () => {
     password: "",
     remember: false,
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -19,9 +22,43 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    alert("Login submitted successfully!");
+    setIsLoading(true);
+    setError(null);
+
+    const apiUrl = import.meta.env.VITE_API_URL || '';
+
+    try {
+      const response = await fetch(`${apiUrl}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: credentials.email,
+          password: credentials.password
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Login failed');
+      }
+
+      // Store token
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify({ name: data.name, email: data.email }));
+      
+      setSuccess(true);
+      
+      // Temporary success behavior
+      setTimeout(() => alert(`Welcome back, ${data.name}!`), 500);
+      
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -64,6 +101,9 @@ const Login = () => {
                 Enter your credentials to continue.
               </p>
             </div>
+
+            {error && <div className="mb-4 rounded border border-red-500 bg-red-500/10 p-3 text-sm text-red-400">{error}</div>}
+            {success && <div className="mb-4 rounded border border-green-500 bg-green-500/10 p-3 text-sm text-green-400">Login successful! Redirecting...</div>}
 
             <div className="space-y-5">
               <label className="block">
@@ -119,9 +159,10 @@ const Login = () => {
 
             <button
               type="submit"
-              className="mt-8 w-full rounded-lg bg-cyan-500 px-5 py-3 font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-400 hover:shadow-cyan-500/40"
+              disabled={isLoading || success}
+              className={`mt-8 w-full rounded-lg px-5 py-3 font-semibold text-white shadow-lg transition ${isLoading || success ? "bg-cyan-500/50 cursor-not-allowed" : "bg-cyan-500 shadow-cyan-500/20 hover:bg-cyan-400 hover:shadow-cyan-500/40"}`}
             >
-              Sign in
+              {isLoading ? "Signing in..." : "Sign in"}
             </button>
           </motion.form>
         </div>
