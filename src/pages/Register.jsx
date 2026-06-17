@@ -2,12 +2,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import ParticlesBackground from "../components/background/ParticlesBackground";
 import ServicesBackground from "../components/background/ServicesBackground";
+import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
+    name: "",
     email: "",
     password: "",
-    remember: false,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -30,10 +32,11 @@ const Login = () => {
     const apiUrl = import.meta.env.VITE_API_URL || '';
 
     try {
-      const response = await fetch(`${apiUrl}/api/auth/login`, {
+      const response = await fetch(`${apiUrl}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          name: credentials.name,
           email: credentials.email,
           password: credentials.password
         }),
@@ -42,7 +45,7 @@ const Login = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Login failed');
+        throw new Error(data.message || 'Registration failed');
       }
 
       // Store token
@@ -51,8 +54,10 @@ const Login = () => {
       
       setSuccess(true);
       
-      // Temporary success behavior
-      setTimeout(() => alert(`Welcome back, ${data.name}!`), 500);
+      setTimeout(() => {
+        alert(`Welcome, ${data.name}! Your account has been created.`);
+        navigate('/');
+      }, 1000);
       
     } catch (err) {
       setError(err.message);
@@ -76,15 +81,14 @@ const Login = () => {
             className="max-w-2xl"
           >
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
-              Admin Portal
+              Create Account
             </p>
             <h1 className="text-4xl font-extrabold leading-tight md:text-6xl">
-              Secure access for Atlantic
-              <span className="text-cyan-400">Bridge</span> teams.
+              Join Atlantic
+              <span className="text-cyan-400">Bridge</span> today.
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-slate-300 md:text-lg">
-              Sign in to manage exchange workflows, client updates, and
-              operational activity from one protected workspace.
+              Sign up to unlock access to our exchange platform and start your journey with us.
             </p>
           </motion.div>
 
@@ -96,16 +100,31 @@ const Login = () => {
             className="rounded-lg border border-cyan-500/20 bg-slate-950/70 p-6 shadow-2xl shadow-cyan-500/10 backdrop-blur-xl md:p-8"
           >
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-white">Welcome back</h2>
+              <h2 className="text-2xl font-bold text-white">Sign up</h2>
               <p className="mt-2 text-sm text-slate-400">
-                Enter your credentials to continue.
+                Fill in your details to create an account.
               </p>
             </div>
 
             {error && <div className="mb-4 rounded border border-red-500 bg-red-500/10 p-3 text-sm text-red-400">{error}</div>}
-            {success && <div className="mb-4 rounded border border-green-500 bg-green-500/10 p-3 text-sm text-green-400">Login successful! Redirecting...</div>}
+            {success && <div className="mb-4 rounded border border-green-500 bg-green-500/10 p-3 text-sm text-green-400">Registration successful! Redirecting...</div>}
 
             <div className="space-y-5">
+              <label className="block">
+                <span className="mb-2 block text-sm font-medium text-slate-300">
+                  Full Name
+                </span>
+                <input
+                  type="text"
+                  name="name"
+                  value={credentials.name}
+                  onChange={handleChange}
+                  placeholder="John Doe"
+                  className="w-full rounded-lg border border-slate-700 bg-white/5 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                  required
+                />
+              </label>
+
               <label className="block">
                 <span className="mb-2 block text-sm font-medium text-slate-300">
                   Email address
@@ -133,28 +152,9 @@ const Login = () => {
                   placeholder="Enter password"
                   className="w-full rounded-lg border border-slate-700 bg-white/5 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
                   required
+                  minLength={6}
                 />
               </label>
-            </div>
-
-            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-sm">
-              <label className="flex cursor-pointer items-center gap-2 text-slate-300">
-                <input
-                  type="checkbox"
-                  name="remember"
-                  checked={credentials.remember}
-                  onChange={handleChange}
-                  className="h-4 w-4 rounded border-slate-600 bg-slate-900 text-cyan-500 accent-cyan-500"
-                />
-                Remember me
-              </label>
-
-              <button
-                type="button"
-                className="font-medium text-cyan-300 transition hover:text-cyan-200"
-              >
-                Forgot password?
-              </button>
             </div>
 
             <button
@@ -162,13 +162,13 @@ const Login = () => {
               disabled={isLoading || success}
               className={`mt-8 w-full rounded-lg px-5 py-3 font-semibold text-white shadow-lg transition ${isLoading || success ? "bg-cyan-500/50 cursor-not-allowed" : "bg-cyan-500 shadow-cyan-500/20 hover:bg-cyan-400 hover:shadow-cyan-500/40"}`}
             >
-              {isLoading ? "Signing in..." : "Sign in"}
+              {isLoading ? "Creating account..." : "Create Account"}
             </button>
             
             <p className="mt-6 text-center text-sm text-slate-400">
-              Don't have an account?{" "}
-              <Link to="/register" className="text-cyan-400 hover:underline">
-                Register here
+              Already have an account?{" "}
+              <Link to="/login" className="text-cyan-400 hover:underline">
+                Sign in here
               </Link>
             </p>
           </motion.form>
@@ -178,4 +178,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

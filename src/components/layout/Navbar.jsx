@@ -79,23 +79,17 @@ const Navbar = () => {
         {/* Action Buttons */}
         <div className="flex items-center gap-3">
           <Link
-          to="/login"
-          className="
-border
-border-slate-700
-text-slate-300
-px-3
-py-1.5
-rounded-lg
-hover:border-cyan-400
-hover:text-cyan-400
-hover:scale-105
-transition-all
-duration-300
-text-sm
-"
+            to="/login"
+            className="text-slate-300 hover:text-cyan-400 transition-colors duration-300 text-sm font-medium hidden sm:block"
           >
-            Admin Portal
+            Sign In
+          </Link>
+
+          <Link
+            to="/register"
+            className="border border-slate-700 text-slate-300 px-3 py-1.5 rounded-lg hover:border-cyan-400 hover:text-cyan-400 hover:scale-105 transition-all duration-300 text-sm"
+          >
+            Register
           </Link>
 
           <Link
