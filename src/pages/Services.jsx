@@ -66,21 +66,25 @@ const Services = () => {
               style={{
                 background: 'var(--panel-hover)',
                 border: '1px solid var(--line)',
-                borderRadius: '12px',
-                overflow: 'hidden',
+                borderRadius: '16px',
+                padding: '16px',
                 display: 'flex',
-                flexDirection: 'column'
+                flexDirection: 'column',
+                gap: '16px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
               }}
             >
-              <div style={{ height: '220px', width: '100%', overflow: 'hidden' }}>
+              <div style={{ height: '200px', width: '100%', borderRadius: '12px', overflow: 'hidden' }}>
                 <img 
                   src={item.image} 
                   alt={t(item.title)} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} 
+                  onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
                 />
               </div>
-              <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: 'var(--primary)' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '0 8px 8px 8px' }}>
+                <h3 style={{ fontSize: '19px', fontWeight: 'bold', color: 'var(--primary)' }}>
                   {t(item.title)}
                 </h3>
                 <p style={{ color: 'var(--text)', fontSize: '15px', lineHeight: '1.6' }}>
