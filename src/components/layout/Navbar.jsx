@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "../LanguageSwitcher.jsx";
-import logo from "../../assets/logos/abe-logo.png";
 
 export default function Navbar() {
   const { t } = useTranslation();
@@ -32,8 +31,7 @@ export default function Navbar() {
       transition={{ duration: 0.7 }}
     >
       <Link className="brand" to="/">
-        <img src={logo} alt="Atlantic Bridge Exchange" className="brand-logo" />
-        <span className="brand-text">Atlantic <span>Bridge</span> Exchange</span>
+        Atlantic <span>Bridge</span> Exchange
       </Link>
 
       {/* Desktop Navigation */}
