@@ -1,59 +1,39 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import ParticlesBackground from "../components/background/ParticlesBackground";
-import ServicesBackground from "../components/background/ServicesBackground";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-    remember: false,
-  });
+  const navigate = useNavigate();
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
 
   const handleChange = (event) => {
-    const { name, value, type, checked } = event.target;
-
-    setCredentials((current) => ({
-      ...current,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    const { name, value } = event.target;
+    setCredentials((current) => ({ ...current, [name]: value }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     setError(null);
-
     const apiUrl = import.meta.env.VITE_API_URL || '';
 
     try {
       const response = await fetch(`${apiUrl}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: credentials.email,
-          password: credentials.password
-        }),
+        body: JSON.stringify(credentials),
       });
 
       const data = await response.json();
+      if (!response.ok) throw new Error(data.message || 'Login failed');
 
-      if (!response.ok) {
-        throw new Error(data.message || 'Login failed');
-      }
-
-      // Store token
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify({ name: data.name, email: data.email }));
       
-      setSuccess(true);
-      
-      // Temporary success behavior
-      setTimeout(() => alert(`Welcome back, ${data.name}!`), 500);
-      
+      alert(`Welcome back, ${data.name}!`);
+      navigate('/');
     } catch (err) {
       setError(err.message);
     } finally {
@@ -62,118 +42,63 @@ const Login = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
-      <ParticlesBackground />
-      <ServicesBackground />
-      <div className="absolute inset-0 bg-black/55" />
-
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pb-16 pt-28">
-        <div className="grid w-full items-center gap-12 lg:grid-cols-[1fr_440px]">
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl"
-          >
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
-              Admin Portal
-            </p>
-            <h1 className="text-4xl font-extrabold leading-tight md:text-6xl">
-              Secure access for Atlantic
-              <span className="text-cyan-400">Bridge</span> teams.
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-300 md:text-lg">
-              Sign in to manage exchange workflows, client updates, and
-              operational activity from one protected workspace.
-            </p>
-          </motion.div>
-
-          <motion.form
-            onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-lg border border-cyan-500/20 bg-slate-950/70 p-6 shadow-2xl shadow-cyan-500/10 backdrop-blur-xl md:p-8"
-          >
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold text-white">Welcome back</h2>
-              <p className="mt-2 text-sm text-slate-400">
-                Enter your credentials to continue.
-              </p>
-            </div>
-
-            {error && <div className="mb-4 rounded border border-red-500 bg-red-500/10 p-3 text-sm text-red-400">{error}</div>}
-            {success && <div className="mb-4 rounded border border-green-500 bg-green-500/10 p-3 text-sm text-green-400">Login successful! Redirecting...</div>}
-
-            <div className="space-y-5">
-              <label className="block">
-                <span className="mb-2 block text-sm font-medium text-slate-300">
-                  Email address
-                </span>
-                <input
-                  type="email"
-                  name="email"
-                  value={credentials.email}
-                  onChange={handleChange}
-                  placeholder="admin@atlanticbridge.com"
-                  className="w-full rounded-lg border border-slate-700 bg-white/5 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
-                  required
-                />
-              </label>
-
-              <label className="block">
-                <span className="mb-2 block text-sm font-medium text-slate-300">
-                  Password
-                </span>
-                <input
-                  type="password"
-                  name="password"
-                  value={credentials.password}
-                  onChange={handleChange}
-                  placeholder="Enter password"
-                  className="w-full rounded-lg border border-slate-700 bg-white/5 px-4 py-3 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
-                  required
-                />
-              </label>
-            </div>
-
-            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-sm">
-              <label className="flex cursor-pointer items-center gap-2 text-slate-300">
-                <input
-                  type="checkbox"
-                  name="remember"
-                  checked={credentials.remember}
-                  onChange={handleChange}
-                  className="h-4 w-4 rounded border-slate-600 bg-slate-900 text-cyan-500 accent-cyan-500"
-                />
-                Remember me
-              </label>
-
-              <button
-                type="button"
-                className="font-medium text-cyan-300 transition hover:text-cyan-200"
-              >
-                Forgot password?
-              </button>
-            </div>
-
-            <button
-              type="submit"
-              disabled={isLoading || success}
-              className={`mt-8 w-full rounded-lg px-5 py-3 font-semibold text-white shadow-lg transition ${isLoading || success ? "bg-cyan-500/50 cursor-not-allowed" : "bg-cyan-500 shadow-cyan-500/20 hover:bg-cyan-400 hover:shadow-cyan-500/40"}`}
-            >
-              {isLoading ? "Signing in..." : "Sign in"}
-            </button>
-            
-            <p className="mt-6 text-center text-sm text-slate-400">
-              Don't have an account?{" "}
-              <Link to="/register" className="text-cyan-400 hover:underline">
-                Register here
-              </Link>
-            </p>
-          </motion.form>
+    <section className="container section" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
+      <motion.form
+        onSubmit={handleSubmit}
+        initial={{ opacity: 0, y: 32 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        style={{ width: '100%', maxWidth: '440px', background: 'var(--panel)', padding: '2rem', borderRadius: '12px', border: '1px solid var(--line)' }}
+      >
+        <div style={{ marginBottom: '2rem' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 'bold' }}>Sign in</h2>
+          <p style={{ color: 'var(--muted)', marginTop: '8px' }}>Enter your credentials to access your account.</p>
         </div>
-      </div>
+
+        {error && <div style={{ marginBottom: '1rem', padding: '12px', background: '#fee2e2', color: '#dc2626', borderRadius: '6px' }}>{error}</div>}
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <label>
+            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Email address</span>
+            <input
+              type="email"
+              name="email"
+              value={credentials.email}
+              onChange={handleChange}
+              style={{ width: '100%', padding: '12px', border: '1px solid var(--line)', borderRadius: '6px', outline: 'none' }}
+              required
+            />
+          </label>
+
+          <label>
+            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Password</span>
+            <input
+              type="password"
+              name="password"
+              value={credentials.password}
+              onChange={handleChange}
+              style={{ width: '100%', padding: '12px', border: '1px solid var(--line)', borderRadius: '6px', outline: 'none' }}
+              required
+            />
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          disabled={isLoading}
+          className="btn primary"
+          style={{ width: '100%', marginTop: '2rem', display: 'block', textAlign: 'center' }}
+        >
+          {isLoading ? "Signing in..." : "Sign in"}
+        </button>
+        
+        <p style={{ marginTop: '1.5rem', textAlign: 'center', color: 'var(--muted)', fontSize: '14px' }}>
+          Don't have an account?{" "}
+          <Link to="/register" style={{ color: 'var(--primary)', fontWeight: '600' }}>
+            Register here
+          </Link>
+        </p>
+      </motion.form>
     </section>
   );
 };

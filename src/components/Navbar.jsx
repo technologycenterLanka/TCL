@@ -53,12 +53,9 @@ export default function Navbar() {
         })}
       </nav>
 
-      <div className="nav-right" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-        <Link className="nav-link-item" to="/login">
-          Sign In
-        </Link>
-        <Link className="nav-cta" to="/register">
-          Register
+      <div className="nav-right">
+        <Link className="nav-cta" to="/contact">
+          Start Project
         </Link>
       </div>
     </motion.header>

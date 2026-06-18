@@ -1,5 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { Routes, Route } from "react-router-dom";
 
 import Home from "../pages/Home";
 import About from "../pages/About";
@@ -9,28 +8,17 @@ import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
-function Page({ children }) {
-  return (
-    <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -18 }} transition={{ duration: 0.45 }}>
-      {children}
-    </motion.div>
-  );
-}
-
 const AppRoutes = () => {
-  const location = useLocation();
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Page><Home /></Page>} />
-        <Route path="/about" element={<Page><About /></Page>} />
-        <Route path="/services" element={<Page><Services /></Page>} />
-        <Route path="/portfolio" element={<Page><Portfolio /></Page>} />
-        <Route path="/contact" element={<Page><Contact /></Page>} />
-        <Route path="/login" element={<Page><Login /></Page>} />
-        <Route path="/register" element={<Page><Register /></Page>} />
-      </Routes>
-    </AnimatePresence>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/portfolio" element={<Portfolio />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
   );
 };
 
