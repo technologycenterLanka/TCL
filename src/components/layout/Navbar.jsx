@@ -11,7 +11,7 @@ export default function Navbar() {
 
   const links = [
     [t("nav.home"), "/"],
-    [t("nav.portfolio"), "/portfolio"],
+    [t("nav.services"), "/services"],
     [t("nav.contact"), "/contact"],
     [t("nav.signIn"), "/login"],
   ];

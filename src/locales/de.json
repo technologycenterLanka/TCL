@@ -1,7 +1,7 @@
 ﻿{
   "nav": {
     "home": "Startseite",
-    "portfolio": "Portfolio",
+    "services": "Dienstleistungen",
     "contact": "Kontakt",
     "signIn": "Anmelden",
     "register": "Registrieren"
@@ -56,5 +56,26 @@
     "createBtn": "Konto erstellen",
     "haveAccount": "Haben Sie bereits ein Konto?",
     "signInHere": "Hier anmelden"
+  },
+  "services": {
+    "eyebrow": "WAS WIR TUN",
+    "title": "Premium-Geschäftslösungen",
+    "desc": "Technologie, Marketing und Kontosupport klar präsentiert, damit Sie schnell verstehen, wie Atlantic Bridge Exchange Ihrem Unternehmen beim Wachstum helfen kann.",
+    "s1Title": "IT-Infrastruktur",
+    "s1Desc": "Zuverlässige Unternehmenssysteme, Workstations, Server und Architekturen, die entwickelt wurden, um den täglichen Betrieb stabil und sicher zu halten.",
+    "s2Title": "Softwareentwicklung",
+    "s2Desc": "Maßgeschneiderte Webplattformen, Geschäftsportale und mobilgerätefähige Anwendungen, die um den tatsächlichen Workflow Ihres Teams herum entwickelt wurden.",
+    "s3Title": "KI & Automatisierung",
+    "s3Desc": "Intelligente Geschäftssysteme, die den manuellen Aufwand reduzieren, Daten verbinden und Teams dabei helfen, schnellere operative Entscheidungen zu treffen.",
+    "s4Title": "Cloud-Lösungen",
+    "s4Desc": "Sicheres Cloud-Hosting, Migration, Backups und skalierbare Umgebungen für wachsende digitale Produkte und Dienstleistungen.",
+    "s5Title": "Marketing-Dienstleistungen",
+    "s5Desc": "Digitale Kampagnen, Marken-Content, Social-Media-Strategie und Support bei der Lead-Generierung, der dabei hilft, neue Kunden zu gewinnen.",
+    "s6Title": "Buchhaltungsdienste",
+    "s6Desc": "Unterstützung bei der Buchhaltung, Rechnungsverfolgung, Finanzberichten und Kontoverwaltungsdiensten für eine klarere Geschäftskontrolle.",
+    "s7Title": "Netzwerke",
+    "s7Desc": "Kabelgebundene und drahtlose Hochgeschwindigkeitsnetzwerke, Geräteeinrichtung, Überwachung und Support für eine zuverlässige Team-Konnektivität.",
+    "s8Title": "Beratung",
+    "s8Desc": "Praktische Technologiestrategie, Systemplanung und Wachstumsberatung für Unternehmen, die sich auf Skalierung vorbereiten."
   }
 }

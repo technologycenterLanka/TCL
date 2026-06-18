@@ -1,7 +1,7 @@
 ﻿{
   "nav": {
     "home": "Home",
-    "portfolio": "Portfolio",
+    "services": "Services",
     "contact": "Contact",
     "signIn": "Sign In",
     "register": "Register"
@@ -56,5 +56,26 @@
     "createBtn": "Create Account",
     "haveAccount": "Already have an account?",
     "signInHere": "Sign in here"
+  },
+  "services": {
+    "eyebrow": "WHAT WE DO",
+    "title": "Premium Business Solutions",
+    "desc": "Technology, marketing, and account support presented clearly so you can quickly understand how Atlantic Bridge Exchange can help your business scale.",
+    "s1Title": "IT Infrastructure",
+    "s1Desc": "Reliable enterprise systems, workstations, servers, and architecture designed to keep daily operations stable and secure.",
+    "s2Title": "Software Development",
+    "s2Desc": "Custom web platforms, business portals, and mobile-ready applications built around your team's real workflow.",
+    "s3Title": "AI & Automation",
+    "s3Desc": "Smart business systems that reduce manual effort, connect data, and help teams make faster operational decisions.",
+    "s4Title": "Cloud Solutions",
+    "s4Desc": "Secure cloud hosting, migration, backups, and scalable environments for growing digital products and services.",
+    "s5Title": "Marketing Services",
+    "s5Desc": "Digital campaigns, brand content, social media strategy, and lead generation support that helps attract new customers.",
+    "s6Title": "Accounts Services",
+    "s6Desc": "Bookkeeping support, invoice tracking, financial reports, and account management services for clearer business control.",
+    "s7Title": "Networking",
+    "s7Desc": "High-speed wired and wireless networks, device setup, monitoring, and support for dependable team connectivity.",
+    "s8Title": "Consulting",
+    "s8Desc": "Practical technology strategy, system planning, and growth guidance for companies preparing to scale."
   }
 }
