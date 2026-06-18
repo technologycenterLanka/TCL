@@ -1,0 +1,75 @@
+{
+  "common": {
+    "tclService": "TCL Service"
+  },
+  "hero": {
+    "badge": "Sri Lankan Digital Engineering Company",
+    "title": "Engineering Digital Products from Sri Lanka to the",
+    "highlight": "World",
+    "description": "TC LANKA designs and builds secure, scalable and intelligent digital solutions — from websites and mobile apps to AI, cloud, cybersecurity, automation and access control systems."
+  },
+  "buttons": {
+    "startProject": "Start a Project",
+    "exploreServices": "Explore Services"
+  },
+  "stats": {
+    "projects": "Projects",
+    "services": "Services",
+    "support": "Support",
+    "global": "Global",
+    "vision": "Vision"
+  },
+  "homeServices": {
+    "eyebrow": "WHAT WE DO",
+    "title": "Premium Digital Solutions",
+    "text": "A complete digital service ecosystem for startups, SMEs and growing brands."
+  },
+  "why": {
+    "eyebrow": "WHY TCL",
+    "title": "Built cleaner, faster and more scalable.",
+    "text": "We combine modern engineering, premium design and business-focused execution.",
+    "points": [
+      "Premium UI with strong brand identity",
+      "Secure code and OWASP-aware development",
+      "AI, cloud and automation ready architecture",
+      "Clear communication and continuous support"
+    ]
+  },
+  "process": {
+    "title": "Our Process",
+    "items": [
+      "Discover business needs",
+      "Design premium UI/UX",
+      "Develop scalable system",
+      "Test security and performance",
+      "Deploy and support"
+    ]
+  },
+  "caseStudies": {
+    "eyebrow": "CASE STUDIES",
+    "title": "Featured Digital Work",
+    "text": "Portfolio style project cards you can replace with your real work."
+  },
+  "projects": [
+    {
+      "type": "AI + Web Platform",
+      "title": "AI Real Estate Platform",
+      "desc": "Smart property discovery platform with clean UI, AI-powered matching and lead generation."
+    },
+    {
+      "type": "Enterprise Software",
+      "title": "Business ERP System",
+      "desc": "Inventory, invoice, customer and sales management system for business operations."
+    },
+    {
+      "type": "MERN Application",
+      "title": "Studio Management System",
+      "desc": "Booking, customer, package and workflow management for a photography business."
+    }
+  ],
+  "cta": {
+    "title": "Ready to build your next digital product?",
+    "text": "Let’s create a premium website, app, AI system or business platform for your brand.",
+    "button": "Contact TC LANKA"
+  }
+}

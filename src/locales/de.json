@@ -1,0 +1,75 @@
+{
+  "common": {
+    "tclService": "TCL Dienstleistung"
+  },
+  "hero": {
+    "badge": "Sri-lankisches Digital-Engineering-Unternehmen",
+    "title": "Wir entwickeln digitale Produkte von Sri Lanka für die",
+    "highlight": "Welt",
+    "description": "TC LANKA entwickelt sichere, skalierbare und intelligente digitale Lösungen — von Websites und mobilen Apps bis hin zu KI, Cloud, Cybersicherheit, Automatisierung und Zutrittskontrollsystemen."
+  },
+  "buttons": {
+    "startProject": "Projekt starten",
+    "exploreServices": "Dienstleistungen ansehen"
+  },
+  "stats": {
+    "projects": "Projekte",
+    "services": "Dienstleistungen",
+    "support": "Support",
+    "global": "Global",
+    "vision": "Vision"
+  },
+  "homeServices": {
+    "eyebrow": "WAS WIR TUN",
+    "title": "Premium-Digitallösungen",
+    "text": "Ein vollständiges digitales Service-Ökosystem für Startups, KMU und wachsende Marken."
+  },
+  "why": {
+    "eyebrow": "WARUM TCL",
+    "title": "Sauberer, schneller und skalierbarer entwickelt.",
+    "text": "Wir verbinden moderne Entwicklung, Premium-Design und geschäftsorientierte Umsetzung.",
+    "points": [
+      "Premium-UI mit starker Markenidentität",
+      "Sicherer Code und OWASP-bewusste Entwicklung",
+      "KI-, Cloud- und Automatisierungsfähige Architektur",
+      "Klare Kommunikation und kontinuierlicher Support"
+    ]
+  },
+  "process": {
+    "title": "Unser Prozess",
+    "items": [
+      "Geschäftsanforderungen verstehen",
+      "Premium UI/UX entwerfen",
+      "Skalierbares System entwickeln",
+      "Sicherheit und Performance testen",
+      "Bereitstellen und unterstützen"
+    ]
+  },
+  "caseStudies": {
+    "eyebrow": "CASE STUDIES",
+    "title": "Ausgewählte digitale Arbeiten",
+    "text": "Projektkarten im Portfolio-Stil, die du durch deine echten Arbeiten ersetzen kannst."
+  },
+  "projects": [
+    {
+      "type": "KI + Web-Plattform",
+      "title": "KI-Immobilienplattform",
+      "desc": "Intelligente Immobilienplattform mit sauberer UI, KI-gestütztem Matching und Lead-Generierung."
+    },
+    {
+      "type": "Enterprise-Software",
+      "title": "Business-ERP-System",
+      "desc": "Inventar-, Rechnungs-, Kunden- und Vertriebsmanagementsystem für Geschäftsprozesse."
+    },
+    {
+      "type": "MERN-Anwendung",
+      "title": "Studio-Management-System",
+      "desc": "Buchungs-, Kunden-, Paket- und Workflow-Management für ein Fotografie-Unternehmen."
+    }
+  ],
+  "cta": {
+    "title": "Bereit, dein nächstes digitales Produkt zu entwickeln?",
+    "text": "Lass uns eine Premium-Website, App, ein KI-System oder eine Business-Plattform für deine Marke erstellen.",
+    "button": "TC LANKA kontaktieren"
+  }
+}
