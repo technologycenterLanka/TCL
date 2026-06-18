@@ -61,6 +61,33 @@ export default function Home() {
               </Link>
             </motion.div>
           </div>
+          
+          <motion.div 
+            className="hero-visual"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            style={{ 
+              position: 'relative', 
+              width: '100%', 
+              height: '450px', 
+              borderRadius: '24px', 
+              overflow: 'hidden', 
+              boxShadow: '0 25px 50px -12px rgba(10, 37, 64, 0.15)',
+              border: '1px solid var(--line)'
+            }}
+          >
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              src="https://cdn.pixabay.com/video/2020/05/25/40134-425122851_large.mp4"
+            />
+            {/* A subtle corporate overlay to make the video perfectly match the brand */}
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,37,64,0.2), rgba(252,163,17,0.1))', pointerEvents: 'none' }} />
+          </motion.div>
         </div>
       </section>
 
