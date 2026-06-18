@@ -126,17 +126,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-text {
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 800;
   letter-spacing: -1px;
   color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
-.brand span {
+.brand-text span {
   color: var(--primary);
 }
 
@@ -1091,6 +1100,12 @@ h1, h2, h3, h4, h5, h6 {
   .brand {
     font-size: 18px;
     letter-spacing: -0.5px;
+  }
+  .brand-text {
+    display: none;
+  }
+  .brand-logo {
+    height: 46px;
   }
   .hero-board, .stats, .service-grid, .project-grid, .about-grid {
     grid-template-columns: 1fr;
