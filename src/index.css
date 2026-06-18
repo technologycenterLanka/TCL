@@ -16,9 +16,9 @@
   --muted: #64748B;
   
   /* Brand Colors */
-  --primary: #fca311;      /* High-trust Corporate Blue */
-  --primary-hover: #e08d0e;
-  --accent: #0A2540;       /* Deep Navy for contrast */
+  --primary: #0A2540;      /* Deep Navy Blue */
+  --primary-hover: #113255;
+  --accent: #fca311;       /* Orange/Gold for headings */
 }
 
 * {
