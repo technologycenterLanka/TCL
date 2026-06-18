@@ -4,13 +4,13 @@
 
 
 :root {
-  /* Pristine Light Enterprise Palette */
-  --bg: #FFFFFF;
-  --bg-secondary: #F8FAFC;
-  --panel: #FFFFFF;
-  --panel-hover: #F8FAFC;
-  --line: #E2E8F0;
-  --line-strong: #CBD5E1;
+  /* Premium Glassmorphism Palette */
+  --bg: #F1F5F9;
+  --bg-secondary: #E2E8F0;
+  --panel: rgba(255, 255, 255, 0.65);
+  --panel-hover: rgba(255, 255, 255, 0.85);
+  --line: rgba(255, 255, 255, 0.6);
+  --line-strong: rgba(255, 255, 255, 0.9);
   
   --text: #0F172A;
   --muted: #64748B;
@@ -63,6 +63,28 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -10;
   background: var(--bg);
   overflow: hidden;
+}
+
+.bg-scene::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 60vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(252, 163, 17, 0.12) 0%, transparent 60%);
+  filter: blur(60px);
+}
+
+.bg-scene::after {
+  content: "";
+  position: absolute;
+  bottom: -10%;
+  right: -10%;
+  width: 70vw;
+  height: 70vh;
+  background: radial-gradient(circle, rgba(10, 37, 64, 0.08) 0%, transparent 60%);
+  filter: blur(60px);
 }
 
 .grid-lines {
@@ -396,6 +418,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .tech-tile {
   background: var(--panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--line);
   border-top: 4px solid transparent;
   padding: 24px 16px;
@@ -440,6 +464,8 @@ h1, h2, h3, h4, h5, h6 {
   text-align: left;
   padding: 24px;
   background: var(--panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--line);
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
@@ -509,6 +535,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .service-card, .project-card, .glass-panel {
   background: var(--panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--line);
   border-top: 4px solid transparent;
   border-radius: 12px;
@@ -633,6 +661,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .bento-item {
   background: var(--panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
