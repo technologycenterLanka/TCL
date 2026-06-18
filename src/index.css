@@ -1098,14 +1098,15 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 600px) {
   .brand {
-    font-size: 18px;
-    letter-spacing: -0.5px;
+    gap: 8px;
   }
   .brand-text {
-    display: none;
+    display: block;
+    font-size: 14px;
+    white-space: nowrap;
   }
   .brand-logo {
-    height: 46px;
+    height: 32px;
   }
   .hero-board, .stats, .service-grid, .project-grid, .about-grid {
     grid-template-columns: 1fr;
