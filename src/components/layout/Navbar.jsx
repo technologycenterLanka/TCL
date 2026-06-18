@@ -24,7 +24,7 @@ export default function Navbar() {
       transition={{ duration: 0.7 }}
     >
       <Link className="brand" to="/">
-        Atlantic<span>Bridge</span>
+        Atlantic <span>Bridge</span> Exchange
       </Link>
 
       <nav onMouseLeave={() => setHoveredPath(null)}>
