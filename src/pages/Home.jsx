@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -33,7 +33,7 @@ function TechShape() {
 }
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 500], [0, 150]);
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
@@ -45,49 +45,71 @@ export default function Home() {
   });
   const bentoY = useTransform(bentoScroll, [0, 1], ["-10%", "10%"]);
 
+  // Language Slideshow Logic
+  const languages = ['en', 'de', 'pt', 'es'];
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % languages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isHovered, languages.length]);
+
+  const slideLang = languages[slideIndex];
+  const slideT = i18n.getFixedT(slideLang);
+
   return (
     <main>
       <section className="hero container">
         <div className="hero-grid">
-          <div className="hero-copy">
-            <motion.div
-              className="pill"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              {t("home.pill")}
-            </motion.div>
+          <div 
+            className="hero-copy"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={slideLang}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.4 }}
+                style={{ width: '100%' }}
+              >
+                <div className="pill">
+                  {slideT("home.pill")}
+                </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              {t("home.title1")}<span>{t("home.title2")}</span>{t("home.title3")}
-            </motion.h1>
+                <h1>
+                  {slideT("home.title1")}<span>{slideT("home.title2")}</span>{slideT("home.title3")}
+                </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              {t("home.desc")}
-            </motion.p>
+                <p>
+                  {slideT("home.desc")}
+                </p>
 
-            <motion.div
-              className="hero-actions"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <Link className="btn primary" to="/register">
-                {t("home.registerBtn")}
-              </Link>
+                <div className="hero-actions">
+                  <Link 
+                    className="btn primary" 
+                    to="/register" 
+                    onClick={() => i18n.changeLanguage(slideLang)}
+                  >
+                    {slideT("home.registerBtn")}
+                  </Link>
 
-              <Link className="btn ghost" to="/login">
-                {t("home.signInBtn")}
-              </Link>
-            </motion.div>
+                  <Link 
+                    className="btn ghost" 
+                    to="/login" 
+                    onClick={() => i18n.changeLanguage(slideLang)}
+                  >
+                    {slideT("home.signInBtn")}
+                  </Link>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
           
           <motion.div 
