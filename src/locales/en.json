@@ -7,21 +7,21 @@
     "register": "Register"
   },
   "home": {
-    "pill": "CRYPTO EXCHANGE",
+    "pill": "Technology Solutions Partner",
     "title1": "Atlantic ",
     "title2": "Bridge",
     "title3": " Exchange",
-    "desc": "Join the world's most premium cryptocurrency exchange platform. Trade seamlessly, securely, and with zero hassle.",
+    "desc": "Empowering businesses with premium digital engineering, AI, and IT infrastructure. We build scalable systems tailored to your operational needs.",
     "registerBtn": "Register Now",
     "signInBtn": "Sign In",
     "whyTitle": "Why Choose Atlantic Bridge?",
-    "check1": "Bank-grade security and encryption",
-    "check2": "Zero latency trading engine",
-    "check3": "24/7 dedicated account support",
-    "stat1Val": "2M+",
-    "stat1Lbl": "Active Traders",
-    "stat2Val": "$50B+",
-    "stat2Lbl": "Quarterly Volume"
+    "check1": "Enterprise-grade security and architecture",
+    "check2": "Custom scalable software development",
+    "check3": "24/7 dedicated IT support and consulting",
+    "stat1Val": "150+",
+    "stat1Lbl": "Enterprise Clients",
+    "stat2Val": "99.9%",
+    "stat2Lbl": "System Uptime"
   },
   "contact": {
     "quoteTitle": "Request a Quote",

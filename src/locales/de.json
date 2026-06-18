@@ -7,21 +7,21 @@
     "register": "Registrieren"
   },
   "home": {
-    "pill": "KRYPTOBÖRSE",
+    "pill": "Technologie-Lösungspartner",
     "title1": "Atlantic ",
     "title2": "Bridge",
     "title3": " Exchange",
-    "desc": "Treten Sie der erstklassigsten Kryptowährungs-Börse der Welt bei. Handeln Sie nahtlos, sicher und völlig problemlos.",
+    "desc": "Stärkung von Unternehmen durch erstklassiges Digital Engineering, KI und IT-Infrastruktur. Wir entwickeln skalierbare Systeme, die auf Ihre betrieblichen Anforderungen zugeschnitten sind.",
     "registerBtn": "Jetzt Registrieren",
     "signInBtn": "Anmelden",
     "whyTitle": "Warum Atlantic Bridge wählen?",
-    "check1": "Sicherheit und Verschlüsselung auf Bankenniveau",
-    "check2": "Trading-Engine ohne Latenz",
-    "check3": "Rund-um-die-Uhr dedizierter Konto-Support",
-    "stat1Val": "2M+",
-    "stat1Lbl": "Aktive Trader",
-    "stat2Val": "$50B+",
-    "stat2Lbl": "Quartalsvolumen"
+    "check1": "Sicherheit und Architektur auf Unternehmensniveau",
+    "check2": "Maßgeschneiderte skalierbare Softwareentwicklung",
+    "check3": "Rund-um-die-Uhr IT-Support und Beratung",
+    "stat1Val": "150+",
+    "stat1Lbl": "Unternehmenskunden",
+    "stat2Val": "99.9%",
+    "stat2Lbl": "Systemverfügbarkeit"
   },
   "contact": {
     "quoteTitle": "Angebot anfordern",
