@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import SectionTitle from "../components/SectionTitle.jsx";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const isQuoteRequest = searchParams.get("request") === "quote";
   const initialMessage = isQuoteRequest
-    ? "I would like to request a quote for "
+    ? t("contact.quoteText")
     : "";
   const [form, setForm] = useState({
     name: "",
@@ -46,13 +48,13 @@ const Contact = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong');
+        throw new Error(data.message || t("contact.err"));
       }
 
       setSuccessMessage(
         isQuoteRequest
-          ? "Quote request sent successfully!"
-          : "Message sent successfully!"
+          ? t("contact.successQuote")
+          : t("contact.successTouch")
       );
       setForm({ name: "", email: "", message: initialMessage });
     } catch (err) {
@@ -67,8 +69,8 @@ const Contact = () => {
       <section className="container section contact">
         <SectionTitle 
           eyebrow="CONTACT" 
-          title={isQuoteRequest ? "Request a Quote" : "Get in Touch"} 
-          text={isQuoteRequest ? "Tell us what your business needs and we will prepare a clear estimate." : "Have a question or need support? Send us a message and we'll respond within 24 hours."}
+          title={isQuoteRequest ? t("contact.quoteTitle") : t("contact.touchTitle")} 
+          text={isQuoteRequest ? t("contact.quoteText") : t("contact.touchText")}
         />
         
         <div className="contact-grid">
@@ -79,7 +81,7 @@ const Contact = () => {
             <input 
               type="text" 
               name="name"
-              placeholder="Your name" 
+              placeholder={t("contact.name")} 
               value={form.name}
               onChange={handleChange}
               required
@@ -87,29 +89,29 @@ const Contact = () => {
             <input 
               type="email" 
               name="email"
-              placeholder="Email address" 
+              placeholder={t("contact.email")} 
               value={form.email}
               onChange={handleChange}
               required
             />
             <textarea 
               name="message"
-              placeholder={isQuoteRequest ? "Tell us what service you need a quote for" : "Your Message"} 
+              placeholder={isQuoteRequest ? t("contact.msgQuote") : t("contact.msgTouch")} 
               rows="6"
               value={form.message}
               onChange={handleChange}
               required
             />
             <button type="submit" disabled={isLoading} className="btn primary" style={{ border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
-              {isLoading ? "Sending..." : "Send Message"}
+              {isLoading ? t("contact.send") : (isQuoteRequest ? t("contact.btnQuote") : t("contact.btnTouch"))}
             </button>
           </form>
 
           <div className="glass-panel" style={{ background: 'var(--panel-hover)', border: '1px solid var(--line)', padding: '2rem', borderRadius: '12px' }}>
-            <h3 style={{ marginBottom: '1.5rem', color: 'var(--primary)', fontSize: '20px' }}>Contact Details</h3>
+            <h3 style={{ marginBottom: '1.5rem', color: 'var(--primary)', fontSize: '20px' }}>{t("contact.details")}</h3>
             <p style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>Email: <span style={{ color: 'var(--muted)', fontWeight: '400' }}>contact@atlanticbridge.com</span></p>
-            <p style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>Location: <span style={{ color: 'var(--muted)', fontWeight: '400' }}>Colombo, Sri Lanka</span></p>
-            <p style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>Support: <span style={{ color: 'var(--muted)', fontWeight: '400' }}>24/7 Dedicated Support</span></p>
+            <p style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>{t("contact.locationLbl")} <span style={{ color: 'var(--muted)', fontWeight: '400' }}>{t("contact.locationVal")}</span></p>
+            <p style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>{t("contact.supportLbl")} <span style={{ color: 'var(--muted)', fontWeight: '400' }}>{t("contact.supportVal")}</span></p>
           </div>
         </div>
       </section>

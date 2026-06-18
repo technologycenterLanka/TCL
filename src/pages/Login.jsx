@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
@@ -51,15 +53,15 @@ const Login = () => {
         style={{ width: '100%', maxWidth: '440px', background: 'var(--panel)', padding: '2rem', borderRadius: '12px', border: '1px solid var(--line)' }}
       >
         <div style={{ marginBottom: '2rem' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 'bold' }}>Sign in</h2>
-          <p style={{ color: 'var(--muted)', marginTop: '8px' }}>Enter your credentials to access your account.</p>
+          <h2 style={{ fontSize: '24px', fontWeight: 'bold' }}>{t("auth.signIn")}</h2>
+          <p style={{ color: 'var(--muted)', marginTop: '8px' }}>{t("auth.signInDesc")}</p>
         </div>
 
         {error && <div style={{ marginBottom: '1rem', padding: '12px', background: '#fee2e2', color: '#dc2626', borderRadius: '6px' }}>{error}</div>}
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <label>
-            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Email address</span>
+            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t("auth.email")}</span>
             <input
               type="email"
               name="email"
@@ -71,7 +73,7 @@ const Login = () => {
           </label>
 
           <label>
-            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Password</span>
+            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t("auth.pwd")}</span>
             <input
               type="password"
               name="password"
@@ -87,15 +89,15 @@ const Login = () => {
           type="submit"
           disabled={isLoading}
           className="btn primary"
-          style={{ width: '100%', marginTop: '2rem', display: 'block', textAlign: 'center' }}
+          style={{ width: '100%', marginTop: '2rem', display: 'block', textAlign: 'center', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
         >
-          {isLoading ? "Signing in..." : "Sign in"}
+          {isLoading ? t("auth.signingIn") : t("auth.signIn")}
         </button>
         
         <p style={{ marginTop: '1.5rem', textAlign: 'center', color: 'var(--muted)', fontSize: '14px' }}>
-          Don't have an account?{" "}
+          {t("auth.noAccount")}{" "}
           <Link to="/register" style={{ color: 'var(--primary)', fontWeight: '600' }}>
-            Register here
+            {t("auth.regHere")}
           </Link>
         </p>
       </motion.form>

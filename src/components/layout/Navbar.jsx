@@ -1,17 +1,20 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
-
-const links = [
-  ["Home", "/"],
-  ["Portfolio", "/portfolio"],
-  ["Contact", "/contact"],
-  ["Sign In", "/login"],
-];
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../LanguageSwitcher.jsx";
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const location = useLocation();
   const [hoveredPath, setHoveredPath] = useState(null);
+
+  const links = [
+    [t("nav.home"), "/"],
+    [t("nav.portfolio"), "/portfolio"],
+    [t("nav.contact"), "/contact"],
+    [t("nav.signIn"), "/login"],
+  ];
 
   return (
     <motion.header
@@ -51,9 +54,10 @@ export default function Navbar() {
         })}
       </nav>
 
-      <div className="nav-right">
+      <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+        <LanguageSwitcher />
         <Link className="nav-cta" to="/register">
-          Register
+          {t("nav.register")}
         </Link>
       </div>
     </motion.header>

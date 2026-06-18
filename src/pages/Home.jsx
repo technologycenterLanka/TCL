@@ -2,8 +2,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation();
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 500], [0, 150]);
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
@@ -25,7 +27,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              CRYPTO EXCHANGE
+              {t("home.pill")}
             </motion.div>
 
             <motion.h1
@@ -33,7 +35,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              Atlantic <span>Bridge</span> Exchange
+              {t("home.title1")}<span>{t("home.title2")}</span>{t("home.title3")}
             </motion.h1>
 
             <motion.p
@@ -41,7 +43,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Join the world's most premium cryptocurrency exchange platform. Trade seamlessly, securely, and with zero hassle.
+              {t("home.desc")}
             </motion.p>
 
             <motion.div
@@ -51,11 +53,11 @@ export default function Home() {
               transition={{ delay: 0.3 }}
             >
               <Link className="btn primary" to="/register">
-                Register Now
+                {t("home.registerBtn")}
               </Link>
 
               <Link className="btn ghost" to="/login">
-                Sign In
+                {t("home.signInBtn")}
               </Link>
             </motion.div>
           </div>
@@ -73,11 +75,11 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <div className="bento-content">
-              <h3>Why Choose Atlantic Bridge?</h3>
+              <h3>{t("home.whyTitle")}</h3>
               <ul className="check-list">
-                <li><CheckCircle2 size={20} /> Bank-grade security and encryption</li>
-                <li><CheckCircle2 size={20} /> Zero latency trading engine</li>
-                <li><CheckCircle2 size={20} /> 24/7 dedicated account support</li>
+                <li><CheckCircle2 size={20} /> {t("home.check1")}</li>
+                <li><CheckCircle2 size={20} /> {t("home.check2")}</li>
+                <li><CheckCircle2 size={20} /> {t("home.check3")}</li>
               </ul>
             </div>
           </motion.div>
@@ -89,8 +91,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <b>2M+</b>
-            <span>Active Traders</span>
+            <b>{t("home.stat1Val")}</b>
+            <span>{t("home.stat1Lbl")}</span>
           </motion.div>
 
           <motion.div 
@@ -100,8 +102,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <b>$50B+</b>
-            <span>Quarterly Volume</span>
+            <b>{t("home.stat2Val")}</b>
+            <span>{t("home.stat2Lbl")}</span>
           </motion.div>
         </div>
       </section>

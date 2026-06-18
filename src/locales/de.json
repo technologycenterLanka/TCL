@@ -1,75 +1,60 @@
 {
-  "common": {
-    "tclService": "TCL Dienstleistung"
+  "nav": {
+    "home": "Startseite",
+    "portfolio": "Portfolio",
+    "contact": "Kontakt",
+    "signIn": "Anmelden",
+    "register": "Registrieren"
   },
-  "hero": {
-    "badge": "Sri-lankisches Digital-Engineering-Unternehmen",
-    "title": "Wir entwickeln digitale Produkte von Sri Lanka f√ºr die",
-    "highlight": "Welt",
-    "description": "TC LANKA entwickelt sichere, skalierbare und intelligente digitale L√∂sungen ‚Äî von Websites und mobilen Apps bis hin zu KI, Cloud, Cybersicherheit, Automatisierung und Zutrittskontrollsystemen."
+  "home": {
+    "pill": "KRYPTOB÷RSE",
+    "title1": "Atlantic ",
+    "title2": "Bridge",
+    "title3": " Exchange",
+    "desc": "Treten Sie der erstklassigsten Kryptow‰hrungs-Bˆrse der Welt bei. Handeln Sie nahtlos, sicher und vˆllig problemlos.",
+    "registerBtn": "Jetzt Registrieren",
+    "signInBtn": "Anmelden",
+    "whyTitle": "Warum Atlantic Bridge w‰hlen?",
+    "check1": "Sicherheit und Verschl¸sselung auf Bankenniveau",
+    "check2": "Trading-Engine ohne Latenz",
+    "check3": "Rund-um-die-Uhr dedizierter Konto-Support",
+    "stat1Val": "2M+",
+    "stat1Lbl": "Aktive Trader",
+    "stat2Val": "$50B+",
+    "stat2Lbl": "Quartalsvolumen"
   },
-  "buttons": {
-    "startProject": "Projekt starten",
-    "exploreServices": "Dienstleistungen ansehen"
+  "contact": {
+    "quoteTitle": "Angebot anfordern",
+    "quoteText": "Teilen Sie uns Ihre Gesch‰ftsanforderungen mit, und wir erstellen einen klaren Kostenvoranschlag.",
+    "touchTitle": "In Kontakt treten",
+    "touchText": "Haben Sie eine Frage oder benˆtigen Sie Support? Senden Sie uns eine Nachricht und wir antworten innerhalb von 24 Stunden.",
+    "name": "Ihr Name",
+    "email": "E-Mail-Adresse",
+    "msgQuote": "Teilen Sie uns mit, f¸r welchen Service Sie ein Angebot benˆtigen",
+    "msgTouch": "Ihre Nachricht",
+    "send": "Wird gesendet...",
+    "btnQuote": "Angebot anfordern",
+    "btnTouch": "Nachricht senden",
+    "details": "Kontaktdaten",
+    "locationLbl": "Standort:",
+    "locationVal": "Colombo, Sri Lanka",
+    "supportLbl": "Support:",
+    "supportVal": "Rund-um-die-Uhr dedizierter Support"
   },
-  "stats": {
-    "projects": "Projekte",
-    "services": "Dienstleistungen",
-    "support": "Support",
-    "global": "Global",
-    "vision": "Vision"
-  },
-  "homeServices": {
-    "eyebrow": "WAS WIR TUN",
-    "title": "Premium-Digitall√∂sungen",
-    "text": "Ein vollst√§ndiges digitales Service-√ñkosystem f√ºr Startups, KMU und wachsende Marken."
-  },
-  "why": {
-    "eyebrow": "WARUM TCL",
-    "title": "Sauberer, schneller und skalierbarer entwickelt.",
-    "text": "Wir verbinden moderne Entwicklung, Premium-Design und gesch√§ftsorientierte Umsetzung.",
-    "points": [
-      "Premium-UI mit starker Markenidentit√§t",
-      "Sicherer Code und OWASP-bewusste Entwicklung",
-      "KI-, Cloud- und Automatisierungsf√§hige Architektur",
-      "Klare Kommunikation und kontinuierlicher Support"
-    ]
-  },
-  "process": {
-    "title": "Unser Prozess",
-    "items": [
-      "Gesch√§ftsanforderungen verstehen",
-      "Premium UI/UX entwerfen",
-      "Skalierbares System entwickeln",
-      "Sicherheit und Performance testen",
-      "Bereitstellen und unterst√ºtzen"
-    ]
-  },
-  "caseStudies": {
-    "eyebrow": "CASE STUDIES",
-    "title": "Ausgew√§hlte digitale Arbeiten",
-    "text": "Projektkarten im Portfolio-Stil, die du durch deine echten Arbeiten ersetzen kannst."
-  },
-  "projects": [
-    {
-      "type": "KI + Web-Plattform",
-      "title": "KI-Immobilienplattform",
-      "desc": "Intelligente Immobilienplattform mit sauberer UI, KI-gest√ºtztem Matching und Lead-Generierung."
-    },
-    {
-      "type": "Enterprise-Software",
-      "title": "Business-ERP-System",
-      "desc": "Inventar-, Rechnungs-, Kunden- und Vertriebsmanagementsystem f√ºr Gesch√§ftsprozesse."
-    },
-    {
-      "type": "MERN-Anwendung",
-      "title": "Studio-Management-System",
-      "desc": "Buchungs-, Kunden-, Paket- und Workflow-Management f√ºr ein Fotografie-Unternehmen."
-    }
-  ],
-  "cta": {
-    "title": "Bereit, dein n√§chstes digitales Produkt zu entwickeln?",
-    "text": "Lass uns eine Premium-Website, App, ein KI-System oder eine Business-Plattform f√ºr deine Marke erstellen.",
-    "button": "TC LANKA kontaktieren"
+  "auth": {
+    "signIn": "Anmelden",
+    "signInDesc": "Geben Sie Ihre Anmeldedaten ein, um auf Ihr Konto zuzugreifen.",
+    "email": "E-Mail-Adresse",
+    "pwd": "Passwort",
+    "signingIn": "Wird angemeldet...",
+    "noAccount": "Haben Sie noch kein Konto?",
+    "regHere": "Hier registrieren",
+    "signUp": "Registrieren",
+    "signUpDesc": "Geben Sie Ihre Daten ein, um ein Konto zu erstellen.",
+    "fullName": "Vollst‰ndiger Name",
+    "creating": "Konto wird erstellt...",
+    "createBtn": "Konto erstellen",
+    "haveAccount": "Haben Sie bereits ein Konto?",
+    "signInHere": "Hier anmelden"
   }
 }

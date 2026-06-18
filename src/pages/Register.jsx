@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
@@ -56,8 +58,8 @@ const Register = () => {
         style={{ width: '100%', maxWidth: '440px', background: 'var(--panel)', padding: '2rem', borderRadius: '12px', border: '1px solid var(--line)' }}
       >
         <div style={{ marginBottom: '2rem' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 'bold' }}>Sign up</h2>
-          <p style={{ color: 'var(--muted)', marginTop: '8px' }}>Fill in your details to create an account.</p>
+          <h2 style={{ fontSize: '24px', fontWeight: 'bold' }}>{t("auth.signUp")}</h2>
+          <p style={{ color: 'var(--muted)', marginTop: '8px' }}>{t("auth.signUpDesc")}</p>
         </div>
 
         {error && <div style={{ marginBottom: '1rem', padding: '12px', background: '#fee2e2', color: '#dc2626', borderRadius: '6px' }}>{error}</div>}
@@ -65,7 +67,7 @@ const Register = () => {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <label>
-            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Full Name</span>
+            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t("auth.fullName")}</span>
             <input
               type="text"
               name="name"
@@ -77,7 +79,7 @@ const Register = () => {
           </label>
 
           <label>
-            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Email address</span>
+            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t("auth.email")}</span>
             <input
               type="email"
               name="email"
@@ -89,7 +91,7 @@ const Register = () => {
           </label>
 
           <label>
-            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Password</span>
+            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t("auth.pwd")}</span>
             <input
               type="password"
               name="password"
@@ -106,15 +108,15 @@ const Register = () => {
           type="submit"
           disabled={isLoading || success}
           className="btn primary"
-          style={{ width: '100%', marginTop: '2rem', display: 'block', textAlign: 'center' }}
+          style={{ width: '100%', marginTop: '2rem', display: 'block', textAlign: 'center', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
         >
-          {isLoading ? "Creating account..." : "Create Account"}
+          {isLoading ? t("auth.creating") : t("auth.createBtn")}
         </button>
         
         <p style={{ marginTop: '1.5rem', textAlign: 'center', color: 'var(--muted)', fontSize: '14px' }}>
-          Already have an account?{" "}
+          {t("auth.haveAccount")}{" "}
           <Link to="/login" style={{ color: 'var(--primary)', fontWeight: '600' }}>
-            Sign in here
+            {t("auth.signInHere")}
           </Link>
         </p>
       </motion.form>
