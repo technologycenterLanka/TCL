@@ -10,22 +10,22 @@ function TechShape() {
   const meshRef = useRef();
   useFrame((state, delta) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x += delta * 0.1;
-      meshRef.current.rotation.y += delta * 0.15;
+      meshRef.current.rotation.x += delta * 0.15;
+      meshRef.current.rotation.y += delta * 0.2;
     }
   });
 
   return (
-    <Float speed={2.5} rotationIntensity={1.5} floatIntensity={2}>
+    <Float speed={2} rotationIntensity={1.2} floatIntensity={1.5}>
       {/* Outer abstract wireframe (Orange) */}
       <mesh ref={meshRef}>
-        <torusKnotGeometry args={[1.6, 0.4, 128, 16]} />
+        <torusKnotGeometry args={[1.4, 0.35, 128, 16]} />
         <meshStandardMaterial color="#fca311" wireframe />
       </mesh>
       
       {/* Inner solid tech core (Navy Blue) */}
       <mesh>
-        <sphereGeometry args={[1.2, 32, 32]} />
+        <sphereGeometry args={[1.1, 32, 32]} />
         <meshStandardMaterial color="#0A2540" roughness={0.1} metalness={0.8} />
       </mesh>
     </Float>
@@ -95,21 +95,13 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            style={{ 
-              position: 'relative', 
-              width: '100%', 
-              height: '450px', 
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
           >
-            <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+            <Canvas camera={{ position: [0, 0, 9], fov: 35 }}>
               <ambientLight intensity={1.5} />
               <directionalLight position={[10, 10, 5]} intensity={2} />
               <directionalLight position={[-10, -10, -5]} intensity={1} color="#fca311" />
               <TechShape />
-              <OrbitControls enableZoom={false} enablePan={false} />
+              <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={Math.PI/4} maxPolarAngle={3*Math.PI/4} />
             </Canvas>
           </motion.div>
         </div>
