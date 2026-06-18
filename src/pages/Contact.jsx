@@ -110,7 +110,21 @@ const Contact = () => {
           <div className="glass-panel" style={{ background: 'var(--panel-hover)', border: '1px solid var(--line)', padding: '2rem', borderRadius: '12px' }}>
             <h3 style={{ marginBottom: '1.5rem', color: 'var(--primary)', fontSize: '20px' }}>{t("contact.details")}</h3>
             <p style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>Email: <span style={{ color: 'var(--muted)', fontWeight: '400' }}>contact@atlanticbridge.com</span></p>
-            <p style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>{t("contact.locationLbl")} <span style={{ color: 'var(--muted)', fontWeight: '400' }}>{t("contact.locationVal")}</span></p>
+            
+            <div style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>
+              {t("contact.locationLbl")}
+              <div style={{ color: 'var(--muted)', fontWeight: '400', marginTop: '4px', lineHeight: '1.5' }}>
+                ATLANTIC BRIDGE EXCHANGE LTD<br />
+                Unity House, Suite 888<br />
+                Westwood Park, Wigan, WN3 4HE<br />
+                England
+              </div>
+            </div>
+
+            <p style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>
+              {t("contact.companyNumLbl")} <span style={{ color: 'var(--muted)', fontWeight: '400' }}>16995192</span>
+            </p>
+
             <p style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>{t("contact.supportLbl")} <span style={{ color: 'var(--muted)', fontWeight: '400' }}>{t("contact.supportVal")}</span></p>
           </div>
         </div>

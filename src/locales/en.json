@@ -1,4 +1,4 @@
-﻿{
+{
   "nav": {
     "home": "Home",
     "services": "Services",
@@ -37,7 +37,7 @@
     "btnTouch": "Send Message",
     "details": "Contact Details",
     "locationLbl": "Location:",
-    "locationVal": "Colombo, Sri Lanka",
+    "companyNumLbl": "Company Number:",
     "supportLbl": "Support:",
     "supportVal": "24/7 Dedicated Support"
   },

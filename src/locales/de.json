@@ -1,4 +1,4 @@
-﻿{
+{
   "nav": {
     "home": "Startseite",
     "services": "Dienstleistungen",
@@ -37,7 +37,7 @@
     "btnTouch": "Nachricht senden",
     "details": "Kontaktdaten",
     "locationLbl": "Standort:",
-    "locationVal": "Colombo, Sri Lanka",
+    "companyNumLbl": "Firmennummer:",
     "supportLbl": "Support:",
     "supportVal": "Rund-um-die-Uhr dedizierter Support"
   },
