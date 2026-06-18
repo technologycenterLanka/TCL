@@ -1,4 +1,4 @@
-{
+ï»¿{
   "nav": {
     "home": "Startseite",
     "portfolio": "Portfolio",
@@ -7,15 +7,15 @@
     "register": "Registrieren"
   },
   "home": {
-    "pill": "KRYPTOBÖRSE",
+    "pill": "KRYPTOBÃ–RSE",
     "title1": "Atlantic ",
     "title2": "Bridge",
     "title3": " Exchange",
-    "desc": "Treten Sie der erstklassigsten Kryptowährungs-Börse der Welt bei. Handeln Sie nahtlos, sicher und völlig problemlos.",
+    "desc": "Treten Sie der erstklassigsten KryptowÃ¤hrungs-BÃ¶rse der Welt bei. Handeln Sie nahtlos, sicher und vÃ¶llig problemlos.",
     "registerBtn": "Jetzt Registrieren",
     "signInBtn": "Anmelden",
-    "whyTitle": "Warum Atlantic Bridge wählen?",
-    "check1": "Sicherheit und Verschlüsselung auf Bankenniveau",
+    "whyTitle": "Warum Atlantic Bridge wÃ¤hlen?",
+    "check1": "Sicherheit und VerschlÃ¼sselung auf Bankenniveau",
     "check2": "Trading-Engine ohne Latenz",
     "check3": "Rund-um-die-Uhr dedizierter Konto-Support",
     "stat1Val": "2M+",
@@ -25,12 +25,12 @@
   },
   "contact": {
     "quoteTitle": "Angebot anfordern",
-    "quoteText": "Teilen Sie uns Ihre Geschäftsanforderungen mit, und wir erstellen einen klaren Kostenvoranschlag.",
+    "quoteText": "Teilen Sie uns Ihre GeschÃ¤ftsanforderungen mit, und wir erstellen einen klaren Kostenvoranschlag.",
     "touchTitle": "In Kontakt treten",
-    "touchText": "Haben Sie eine Frage oder benötigen Sie Support? Senden Sie uns eine Nachricht und wir antworten innerhalb von 24 Stunden.",
+    "touchText": "Haben Sie eine Frage oder benÃ¶tigen Sie Support? Senden Sie uns eine Nachricht und wir antworten innerhalb von 24 Stunden.",
     "name": "Ihr Name",
     "email": "E-Mail-Adresse",
-    "msgQuote": "Teilen Sie uns mit, für welchen Service Sie ein Angebot benötigen",
+    "msgQuote": "Teilen Sie uns mit, fÃ¼r welchen Service Sie ein Angebot benÃ¶tigen",
     "msgTouch": "Ihre Nachricht",
     "send": "Wird gesendet...",
     "btnQuote": "Angebot anfordern",
@@ -51,7 +51,7 @@
     "regHere": "Hier registrieren",
     "signUp": "Registrieren",
     "signUpDesc": "Geben Sie Ihre Daten ein, um ein Konto zu erstellen.",
-    "fullName": "Vollständiger Name",
+    "fullName": "VollstÃ¤ndiger Name",
     "creating": "Konto wird erstellt...",
     "createBtn": "Konto erstellen",
     "haveAccount": "Haben Sie bereits ein Konto?",
