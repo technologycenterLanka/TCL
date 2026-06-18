@@ -118,6 +118,12 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--primary);
 }
 
+.brand-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
 .nav-shell nav {
   display: flex;
   align-items: center;
@@ -1014,6 +1020,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 980px) {
+  .brand {
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    gap: 8px;
+  }
+  .brand-logo {
+    height: 28px;
+  }
   .hero-grid {
     grid-template-columns: 1fr;
     text-align: center;
