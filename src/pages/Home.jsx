@@ -1,8 +1,36 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Float } from "@react-three/drei";
+
+function TechShape() {
+  const meshRef = useRef();
+  useFrame((state, delta) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += delta * 0.1;
+      meshRef.current.rotation.y += delta * 0.15;
+    }
+  });
+
+  return (
+    <Float speed={2.5} rotationIntensity={1.5} floatIntensity={2}>
+      {/* Outer abstract wireframe (Orange) */}
+      <mesh ref={meshRef}>
+        <torusKnotGeometry args={[1.6, 0.4, 128, 16]} />
+        <meshStandardMaterial color="#fca311" wireframe />
+      </mesh>
+      
+      {/* Inner solid tech core (Navy Blue) */}
+      <mesh>
+        <sphereGeometry args={[1.2, 32, 32]} />
+        <meshStandardMaterial color="#0A2540" roughness={0.1} metalness={0.8} />
+      </mesh>
+    </Float>
+  );
+}
 
 export default function Home() {
   const { t } = useTranslation();
@@ -71,22 +99,18 @@ export default function Home() {
               position: 'relative', 
               width: '100%', 
               height: '450px', 
-              borderRadius: '24px', 
-              overflow: 'hidden', 
-              boxShadow: '0 25px 50px -12px rgba(10, 37, 64, 0.15)',
-              border: '1px solid var(--line)'
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
             }}
           >
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline 
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              src="https://cdn.pixabay.com/video/2020/05/25/40134-425122851_large.mp4"
-            />
-            {/* A subtle corporate overlay to make the video perfectly match the brand */}
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,37,64,0.2), rgba(252,163,17,0.1))', pointerEvents: 'none' }} />
+            <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+              <ambientLight intensity={1.5} />
+              <directionalLight position={[10, 10, 5]} intensity={2} />
+              <directionalLight position={[-10, -10, -5]} intensity={1} color="#fca311" />
+              <TechShape />
+              <OrbitControls enableZoom={false} enablePan={false} />
+            </Canvas>
           </motion.div>
         </div>
       </section>
