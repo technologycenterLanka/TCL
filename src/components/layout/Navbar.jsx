@@ -1,13 +1,20 @@
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "../LanguageSwitcher.jsx";
 
 export default function Navbar() {
   const { t } = useTranslation();
   const location = useLocation();
   const [hoveredPath, setHoveredPath] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   const links = [
     [t("nav.home"), "/"],
@@ -27,6 +34,7 @@ export default function Navbar() {
         Atlantic <span>Bridge</span> Exchange
       </Link>
 
+      {/* Desktop Navigation */}
       <nav onMouseLeave={() => setHoveredPath(null)}>
         {links.map(([name, path]) => {
           const isActive = location.pathname === path;
@@ -60,6 +68,43 @@ export default function Navbar() {
           {t("nav.register")}
         </Link>
       </div>
+
+      {/* Mobile Menu Button */}
+      <button 
+        className="mobile-menu-btn" 
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+      </button>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            className="mobile-menu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+          >
+            {links.map(([name, path]) => (
+              <Link 
+                key={name} 
+                to={path} 
+                className="mobile-link"
+              >
+                {name}
+              </Link>
+            ))}
+            <div className="mobile-menu-bottom">
+              <LanguageSwitcher />
+              <Link className="btn primary" to="/register" style={{ width: '100%', marginTop: '15px' }}>
+                {t("nav.register")}
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }
