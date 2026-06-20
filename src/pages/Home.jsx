@@ -1,11 +1,10 @@
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Float } from "@react-three/drei";
-import { useSlide } from "../context/SlideContext";
 
 function TechShape() {
   const meshRef = useRef();
@@ -34,7 +33,7 @@ function TechShape() {
 }
 
 export default function Home() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 500], [0, 150]);
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
@@ -46,8 +45,31 @@ export default function Home() {
   });
   const bentoY = useTransform(bentoScroll, [0, 1], ["-10%", "10%"]);
 
-  const { slideIndex, setSlideIndex, slideLang, setIsHovered, languages } = useSlide();
+  // Language Slideshow Logic
+  const languages = ['en', 'de', 'pt', 'es'];
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % languages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isHovered, languages.length]);
+
+  const slideLang = languages[slideIndex];
   const slideT = i18n.getFixedT(slideLang);
+
+  // Dispatch custom event to notify Navbar of language change
+  useEffect(() => {
+    const event = new CustomEvent('heroSlideLanguage', { detail: slideLang });
+    window.dispatchEvent(event);
+    
+    return () => {
+      window.dispatchEvent(new CustomEvent('heroSlideLanguage', { detail: null }));
+    };
+  }, [slideLang]);
 
   return (
     <main>
@@ -58,17 +80,26 @@ export default function Home() {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <div className="slide-dots">
-              {languages.map((lang, idx) => (
+            {/* Slide Pagination Dots */}
+            <div className="slide-dots" style={{ display: 'flex', gap: '8px', marginBottom: '25px' }}>
+              {languages.map((lang, index) => (
                 <button
                   key={lang}
-                  className={`slide-dot ${idx === slideIndex ? 'active' : ''}`}
-                  onClick={() => setSlideIndex(idx)}
-                  aria-label={`Go to slide ${idx + 1}`}
+                  onClick={() => setSlideIndex(index)}
+                  style={{
+                    width: slideIndex === index ? '24px' : '8px',
+                    height: '8px',
+                    borderRadius: '4px',
+                    background: slideIndex === index ? 'var(--primary)' : 'var(--line-strong)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
-            
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={slideLang}
@@ -86,7 +117,7 @@ export default function Home() {
                   {slideT("home.title1")}<span>{slideT("home.title2")}</span>{slideT("home.title3")}
                 </h1>
 
-                <p>
+                <p style={{ marginBottom: 0 }}>
                   {slideT("home.desc")}
                 </p>
               </motion.div>

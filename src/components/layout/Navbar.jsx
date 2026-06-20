@@ -5,16 +5,25 @@ import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "../LanguageSwitcher.jsx";
 import logoUrl from "../../assets/abe-logo-main.png";
-import { useSlide } from "../../context/SlideContext";
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const [hoveredPath, setHoveredPath] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [heroLang, setHeroLang] = useState(null);
 
-  const { slideLang } = useSlide();
-  const slideT = i18n.getFixedT(slideLang);
+  // Listen to Hero slide changes
+  useEffect(() => {
+    const handleHeroLang = (e) => setHeroLang(e.detail);
+    window.addEventListener('heroSlideLanguage', handleHeroLang);
+    return () => window.removeEventListener('heroSlideLanguage', handleHeroLang);
+  }, []);
+
+  // Determine which language to use for the Navbar buttons
+  const isHome = location.pathname === '/';
+  const currentLang = heroLang && isHome ? heroLang : i18n.language;
+  const slideT = heroLang && isHome ? i18n.getFixedT(heroLang) : t;
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -67,35 +76,14 @@ export default function Navbar() {
         })}
       </nav>
 
-      <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
         <LanguageSwitcher />
-        <AnimatePresence mode="wait">
-          <motion.div 
-            key={slideLang}
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 5 }}
-            transition={{ duration: 0.3 }}
-            style={{ display: 'flex', gap: '0.75rem' }}
-          >
-            <Link 
-              className="btn ghost" 
-              to="/login"
-              onClick={() => i18n.changeLanguage(slideLang)}
-              style={{ padding: '0 16px', height: '36px', fontSize: '13px', display: 'flex', alignItems: 'center' }}
-            >
-              {slideT("home.signInBtn")}
-            </Link>
-            <Link 
-              className="btn primary" 
-              to="/register"
-              onClick={() => i18n.changeLanguage(slideLang)}
-              style={{ padding: '0 16px', height: '36px', fontSize: '13px', display: 'flex', alignItems: 'center' }}
-            >
-              {slideT("home.registerBtn")}
-            </Link>
-          </motion.div>
-        </AnimatePresence>
+        <Link className="nav-link-item" to="/login" onClick={() => isHome && i18n.changeLanguage(currentLang)}>
+          {slideT("nav.signIn")}
+        </Link>
+        <Link className="nav-cta" to="/register" onClick={() => isHome && i18n.changeLanguage(currentLang)}>
+          {slideT("nav.register")}
+        </Link>
       </div>
 
       {/* Mobile Menu Button */}
@@ -127,8 +115,11 @@ export default function Navbar() {
             ))}
             <div className="mobile-menu-bottom">
               <LanguageSwitcher />
-              <Link className="btn primary" to="/register" style={{ width: '100%', marginTop: '15px' }}>
-                {t("nav.register")}
+              <Link className="mobile-link" to="/login" onClick={() => isHome && i18n.changeLanguage(currentLang)} style={{ width: '100%', marginTop: '15px' }}>
+                {slideT("nav.signIn")}
+              </Link>
+              <Link className="btn primary" to="/register" onClick={() => isHome && i18n.changeLanguage(currentLang)} style={{ width: '100%', marginTop: '10px' }}>
+                {slideT("nav.register")}
               </Link>
             </div>
           </motion.div>
