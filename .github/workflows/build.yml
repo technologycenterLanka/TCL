@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'dist/**'
+      - 'docs/**'
       - '.github/workflows/**'
       - 'README.md'
 
@@ -36,8 +36,8 @@ jobs:
       - name: Commit Compiled Files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated Build: Compile source to dist/ folder"
-          file_pattern: dist/
+          commit_message: "Automated Build: Compile source to docs/ folder for GitHub Pages"
+          file_pattern: docs/
           skip_dirty_check: false
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
