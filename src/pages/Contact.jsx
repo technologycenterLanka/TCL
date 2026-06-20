@@ -109,7 +109,6 @@ const Contact = () => {
 
           <div className="glass-panel" style={{ background: 'var(--panel-hover)', border: '1px solid var(--line)', padding: '2rem', borderRadius: '12px' }}>
             <h3 style={{ marginBottom: '1.5rem', color: 'var(--primary)', fontSize: '20px' }}>{t("contact.details")}</h3>
-            <p style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>Email: <span style={{ color: 'var(--muted)', fontWeight: '400' }}>contact@atlanticbridge.com</span></p>
             
             <div style={{ marginBottom: '1rem', color: 'var(--text)', fontWeight: '500' }}>
               {t("contact.locationLbl")}
