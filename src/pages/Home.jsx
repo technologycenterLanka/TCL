@@ -79,7 +79,7 @@ export default function Home() {
             className="hero-copy"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            style={{ minHeight: '350px' }}
+            style={{ minHeight: '480px' }}
           >
             {/* Slide Pagination Dots */}
             <div className="slide-dots" style={{ display: 'flex', justifyContent: 'center', width: '100%', gap: '8px', marginBottom: '25px' }}>
