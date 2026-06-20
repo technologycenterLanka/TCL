@@ -60,7 +60,7 @@ export default function Navbar() {
               to={path}
               className={`nav-link-item ${isActive ? "active" : ""}`}
               onMouseEnter={() => setHoveredPath(path)}
-              style={{ position: "relative" }}
+              style={{ position: "relative", minWidth: '135px', textAlign: 'center' }}
             >
               {name}
               {showLine && (
@@ -76,10 +76,10 @@ export default function Navbar() {
       </nav>
 
       <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-        <Link className="nav-link-item" to="/login" onClick={() => isHome && i18n.changeLanguage(currentLang)}>
+        <Link className="nav-link-item" to="/login" onClick={() => isHome && i18n.changeLanguage(currentLang)} style={{ minWidth: '110px', textAlign: 'center' }}>
           {slideT("nav.signIn")}
         </Link>
-        <Link className="nav-cta" to="/register" onClick={() => isHome && i18n.changeLanguage(currentLang)}>
+        <Link className="nav-cta" to="/register" onClick={() => isHome && i18n.changeLanguage(currentLang)} style={{ minWidth: '150px', textAlign: 'center', display: 'inline-flex', justifyContent: 'center' }}>
           {slideT("nav.register")}
         </Link>
       </div>
