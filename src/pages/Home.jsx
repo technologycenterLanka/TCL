@@ -141,6 +141,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Under Construction Badge */}
+      <div style={{
+        position: 'fixed',
+        bottom: '24px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        background: 'rgba(10, 37, 64, 0.85)',
+        backdropFilter: 'blur(12px)',
+        color: 'var(--primary)',
+        padding: '12px 28px',
+        borderRadius: '50px',
+        fontWeight: '700',
+        fontSize: '14px',
+        zIndex: 100,
+        boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+        border: '1px solid rgba(252, 163, 17, 0.2)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        letterSpacing: '0.5px'
+      }}>
+        <span style={{ fontSize: '18px' }}>🚧</span>
+        Website Under Construction
+      </div>
+
       <section className="container section">
         <div className="bento-grid">
           <motion.div 
