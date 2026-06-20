@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
-import LanguageSwitcher from "../LanguageSwitcher.jsx";
 import logoUrl from "../../assets/abe-logo-main.png";
 
 export default function Navbar() {
@@ -77,7 +76,6 @@ export default function Navbar() {
       </nav>
 
       <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-        <LanguageSwitcher />
         <Link className="nav-link-item" to="/login" onClick={() => isHome && i18n.changeLanguage(currentLang)}>
           {slideT("nav.signIn")}
         </Link>
@@ -114,7 +112,6 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="mobile-menu-bottom">
-              <LanguageSwitcher />
               <Link className="mobile-link" to="/login" onClick={() => isHome && i18n.changeLanguage(currentLang)} style={{ width: '100%', marginTop: '15px' }}>
                 {slideT("nav.signIn")}
               </Link>
