@@ -9,6 +9,24 @@ const PhoneInput = ({ dialCodeValue, onDialCodeChange, phoneValue, onPhoneChange
 
   const selectedCountry = countries.find(c => c.code === dialCodeValue) || countries.find(c => c.code === "US");
 
+  const handlePhoneChange = (e) => {
+    let newPhone = e.target.value;
+    
+    if (newPhone.startsWith('+')) {
+      const sortedCountries = [...countries].sort((a, b) => b.dialCode.length - a.dialCode.length);
+      const matchedCountry = sortedCountries.find(c => newPhone.startsWith(c.dialCode));
+      
+      if (matchedCountry) {
+        if (matchedCountry.code !== dialCodeValue) {
+          onDialCodeChange({ target: { name: "dialCode", value: matchedCountry.code } });
+        }
+        newPhone = newPhone.slice(matchedCountry.dialCode.length).trim();
+      }
+    }
+    
+    onPhoneChange({ target: { name: "phone", value: newPhone } });
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
@@ -54,7 +72,7 @@ const PhoneInput = ({ dialCodeValue, onDialCodeChange, phoneValue, onPhoneChange
         type="tel"
         name="phone"
         value={phoneValue}
-        onChange={onPhoneChange}
+        onChange={handlePhoneChange}
         style={{
           flex: 1,
           padding: "12px",
