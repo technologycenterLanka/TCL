@@ -261,7 +261,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 180px 0 100px;
+  padding: 120px 0 100px;
 }
 
 .hero-grid {

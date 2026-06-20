@@ -54,7 +54,7 @@ export default function Home() {
     if (isHovered) return;
     const interval = setInterval(() => {
       setSlideIndex((prev) => (prev + 1) % languages.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
   }, [isHovered, languages.length]);
 
@@ -82,7 +82,7 @@ export default function Home() {
             style={{ minHeight: '350px' }}
           >
             {/* Slide Pagination Dots */}
-            <div className="slide-dots" style={{ display: 'flex', gap: '8px', marginBottom: '25px' }}>
+            <div className="slide-dots" style={{ display: 'flex', justifyContent: 'center', width: '100%', gap: '8px', marginBottom: '25px' }}>
               {languages.map((lang, index) => (
                 <button
                   key={lang}
