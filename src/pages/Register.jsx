@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import CountrySelect from "../components/CountrySelect.jsx";
 
 const Register = () => {
   const { t } = useTranslation();
@@ -105,29 +106,11 @@ const Register = () => {
 
           <label>
             <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t("auth.country")}</span>
-            <select
-              name="country"
+            <CountrySelect 
               value={credentials.country}
               onChange={handleChange}
-              style={{ width: '100%', padding: '12px', border: '1px solid var(--line)', borderRadius: '6px', outline: 'none', background: 'var(--panel)', color: 'var(--text)' }}
-              required
-            >
-              <option value="" disabled>{t("auth.selectCountry")}</option>
-              <option value="US">United States</option>
-              <option value="UK">United Kingdom</option>
-              <option value="CA">Canada</option>
-              <option value="AU">Australia</option>
-              <option value="DE">Germany</option>
-              <option value="FR">France</option>
-              <option value="ES">Spain</option>
-              <option value="IT">Italy</option>
-              <option value="PT">Portugal</option>
-              <option value="BR">Brazil</option>
-              <option value="MX">Mexico</option>
-              <option value="IN">India</option>
-              <option value="JP">Japan</option>
-              <option value="OTHER">Other</option>
-            </select>
+              placeholder={t("auth.selectCountry")}
+            />
           </label>
         </div>
 
