@@ -77,5 +77,20 @@
     "s7Desc": "High-speed wired and wireless networks, device setup, monitoring, and support for dependable team connectivity.",
     "s8Title": "Consulting",
     "s8Desc": "Practical technology strategy, system planning, and growth guidance for companies preparing to scale."
+  },
+  "softwareDev": {
+    "eyebrow": "SOFTWARE DEVELOPMENT",
+    "title1": "Custom ",
+    "title2": "Digital Solutions",
+    "desc": "We engineer robust, scalable web platforms, enterprise software, and mobile applications tailored precisely to your operational workflows.",
+    "feature1Title": "Enterprise Web Apps",
+    "feature1Desc": "High-performance web portals, dashboards, and internal tools with modern architecture.",
+    "feature2Title": "Mobile Ready",
+    "feature2Desc": "Responsive designs and progressive web applications that work perfectly on any device.",
+    "feature3Title": "API Integration",
+    "feature3Desc": "Seamlessly connect your custom software with your existing CRM, ERP, or third-party tools.",
+    "techTitle": "Technologies We Master",
+    "ctaTitle": "Ready to Build Your Platform?",
+    "ctaBtn": "Request an Estimate"
   }
 }

@@ -1,42 +1,52 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import SectionTitle from "../components/SectionTitle.jsx";
 
 const Services = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const serviceKeys = [
     { 
       title: "services.s1Title", desc: "services.s1Desc",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80" 
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80",
+      link: null
     },
     { 
       title: "services.s2Title", desc: "services.s2Desc",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" 
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80",
+      link: "/software-development"
     },
     { 
       title: "services.s3Title", desc: "services.s3Desc",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80" 
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80",
+      link: null
     },
     { 
       title: "services.s4Title", desc: "services.s4Desc",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80" 
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80",
+      link: null
     },
     { 
       title: "services.s5Title", desc: "services.s5Desc",
-      image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=900&q=80" 
+      image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=900&q=80",
+      link: null
     },
     { 
       title: "services.s6Title", desc: "services.s6Desc",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80" 
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80",
+      link: null
     },
     { 
       title: "services.s7Title", desc: "services.s7Desc",
-      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80" 
+      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80",
+      link: null
     },
     { 
       title: "services.s8Title", desc: "services.s8Desc",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" 
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80",
+      link: null
     },
   ];
 
@@ -62,6 +72,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05, duration: 0.5 }}
               viewport={{ once: true }}
+              onClick={() => item.link && navigate(item.link)}
               className="glass-panel"
               style={{
                 background: 'var(--panel-hover)',
@@ -71,7 +82,9 @@ const Services = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '16px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
+                boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
+                cursor: item.link ? 'pointer' : 'default',
+                position: 'relative'
               }}
             >
               <div style={{ height: '200px', width: '100%', borderRadius: '12px', overflow: 'hidden' }}>
@@ -84,9 +97,16 @@ const Services = () => {
                 />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '0 8px 8px 8px' }}>
-                <h3 style={{ fontSize: '19px', fontWeight: 'bold', color: 'var(--primary)' }}>
-                  {t(item.title)}
-                </h3>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <h3 style={{ fontSize: '19px', fontWeight: 'bold', color: 'var(--primary)' }}>
+                    {t(item.title)}
+                  </h3>
+                  {item.link && (
+                    <div style={{ color: 'var(--accent)', fontSize: '14px', fontWeight: 'bold' }}>
+                      &rarr;
+                    </div>
+                  )}
+                </div>
                 <p style={{ color: 'var(--text)', fontSize: '15px', lineHeight: '1.6' }}>
                   {t(item.desc)}
                 </p>

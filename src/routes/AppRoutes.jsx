@@ -7,6 +7,7 @@ import Portfolio from "../pages/Portfolio";
 import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import SoftwareDevelopment from "../pages/SoftwareDevelopment";
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/software-development" element={<SoftwareDevelopment />} />
     </Routes>
   );
 };
