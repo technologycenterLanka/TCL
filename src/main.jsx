@@ -7,8 +7,12 @@ import "./styles/theme.css";
 import App from "./App";
 import "./index.css";
 
+import { SlideProvider } from "./context/SlideContext";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <HashRouter>
-    <App />
+    <SlideProvider>
+      <App />
+    </SlideProvider>
   </HashRouter>
 );

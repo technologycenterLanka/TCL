@@ -5,12 +5,16 @@ import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "../LanguageSwitcher.jsx";
 import logoUrl from "../../assets/abe-logo-main.png";
+import { useSlide } from "../../context/SlideContext";
 
 export default function Navbar() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const [hoveredPath, setHoveredPath] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { slideLang } = useSlide();
+  const slideT = i18n.getFixedT(slideLang);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -21,7 +25,6 @@ export default function Navbar() {
     [t("nav.home"), "/"],
     [t("nav.services"), "/services"],
     [t("nav.contact"), "/contact"],
-    [t("nav.signIn"), "/login"],
   ];
 
   return (
@@ -64,11 +67,35 @@ export default function Navbar() {
         })}
       </nav>
 
-      <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+      <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
         <LanguageSwitcher />
-        <Link className="nav-cta" to="/register">
-          {t("nav.register")}
-        </Link>
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={slideLang}
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 5 }}
+            transition={{ duration: 0.3 }}
+            style={{ display: 'flex', gap: '0.75rem' }}
+          >
+            <Link 
+              className="btn ghost" 
+              to="/login"
+              onClick={() => i18n.changeLanguage(slideLang)}
+              style={{ padding: '0 16px', height: '36px', fontSize: '13px', display: 'flex', alignItems: 'center' }}
+            >
+              {slideT("home.signInBtn")}
+            </Link>
+            <Link 
+              className="btn primary" 
+              to="/register"
+              onClick={() => i18n.changeLanguage(slideLang)}
+              style={{ padding: '0 16px', height: '36px', fontSize: '13px', display: 'flex', alignItems: 'center' }}
+            >
+              {slideT("home.registerBtn")}
+            </Link>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Mobile Menu Button */}
