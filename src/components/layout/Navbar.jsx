@@ -30,9 +30,9 @@ export default function Navbar() {
   }, [location.pathname]);
 
   const links = [
-    [t("nav.home"), "/"],
-    [t("nav.services"), "/services"],
-    [t("nav.contact"), "/contact"],
+    [slideT("nav.home"), "/"],
+    [slideT("nav.services"), "/services"],
+    [slideT("nav.contact"), "/contact"],
   ];
 
   return (
