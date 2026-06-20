@@ -57,7 +57,8 @@
     "haveAccount": "Already have an account?",
     "signInHere": "Sign in here",
     "country": "Country",
-    "selectCountry": "Select your country"
+    "selectCountry": "Select your country",
+    "phone": "Phone Number"
   },
   "services": {
     "eyebrow": "WHAT WE DO",

@@ -57,7 +57,8 @@
     "haveAccount": "¿Ya tiene una cuenta?",
     "signInHere": "Inicie sesión aquí",
     "country": "País",
-    "selectCountry": "Seleccione su país"
+    "selectCountry": "Seleccione su país",
+    "phone": "Número de teléfono"
   },
   "services": {
     "eyebrow": "QUÉ HACEMOS",

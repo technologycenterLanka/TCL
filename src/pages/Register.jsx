@@ -3,11 +3,12 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import CountrySelect from "../components/CountrySelect.jsx";
+import PhoneInput from "../components/PhoneInput.jsx";
 
 const Register = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [credentials, setCredentials] = useState({ name: "", email: "", password: "", country: "" });
+  const [credentials, setCredentials] = useState({ name: "", email: "", password: "", country: "", phone: "", dialCode: "US" });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -101,6 +102,16 @@ const Register = () => {
               style={{ width: '100%', padding: '12px', border: '1px solid var(--line)', borderRadius: '6px', outline: 'none' }}
               required
               minLength={6}
+            />
+          </label>
+
+          <label>
+            <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t("auth.phone")}</span>
+            <PhoneInput 
+              dialCodeValue={credentials.dialCode}
+              onDialCodeChange={handleChange}
+              phoneValue={credentials.phone}
+              onPhoneChange={handleChange}
             />
           </label>
 
