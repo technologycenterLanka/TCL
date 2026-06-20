@@ -105,7 +105,7 @@ const Register = () => {
             />
           </label>
 
-          <label>
+          <div>
             <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t("auth.phone")}</span>
             <PhoneInput 
               dialCodeValue={credentials.dialCode}
@@ -113,16 +113,16 @@ const Register = () => {
               phoneValue={credentials.phone}
               onPhoneChange={handleChange}
             />
-          </label>
+          </div>
 
-          <label>
+          <div>
             <span style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t("auth.country")}</span>
             <CountrySelect 
               value={credentials.country}
               onChange={handleChange}
               placeholder={t("auth.selectCountry")}
             />
-          </label>
+          </div>
         </div>
 
         <button
