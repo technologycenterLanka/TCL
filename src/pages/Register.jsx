@@ -31,6 +31,11 @@ const Register = () => {
         body: JSON.stringify(credentials),
       });
 
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Server API is not reachable. (Apache returned HTML instead of JSON). Please ensure the Node.js backend is running and proxied.");
+      }
+
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || 'Registration failed');
 
