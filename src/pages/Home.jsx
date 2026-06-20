@@ -79,6 +79,7 @@ export default function Home() {
             className="hero-copy"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            style={{ minHeight: '350px' }}
           >
             {/* Slide Pagination Dots */}
             <div className="slide-dots" style={{ display: 'flex', gap: '8px', marginBottom: '25px' }}>
@@ -90,7 +91,7 @@ export default function Home() {
                     width: slideIndex === index ? '24px' : '8px',
                     height: '8px',
                     borderRadius: '4px',
-                    background: slideIndex === index ? 'var(--primary)' : 'var(--line-strong)',
+                    background: slideIndex === index ? 'var(--primary)' : 'rgba(10, 37, 64, 0.2)',
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease'
@@ -107,7 +108,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.4 }}
-                style={{ width: '100%' }}
+                style={{ width: '100%', minHeight: '250px' }}
               >
                 <div className="pill">
                   {slideT("home.pill")}
