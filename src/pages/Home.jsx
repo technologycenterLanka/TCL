@@ -135,7 +135,6 @@ export default function Home() {
               <directionalLight position={[10, 10, 5]} intensity={2} />
               <directionalLight position={[-10, -10, -5]} intensity={1} color="#fca311" />
               <TechShape />
-              <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={Math.PI/4} maxPolarAngle={3*Math.PI/4} />
             </Canvas>
           </motion.div>
         </div>
