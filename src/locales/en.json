@@ -55,7 +55,9 @@
     "creating": "Creating account...",
     "createBtn": "Create Account",
     "haveAccount": "Already have an account?",
-    "signInHere": "Sign in here"
+    "signInHere": "Sign in here",
+    "country": "Country",
+    "selectCountry": "Select your country"
   },
   "services": {
     "eyebrow": "WHAT WE DO",

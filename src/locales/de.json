@@ -54,8 +54,10 @@
     "fullName": "Vollständiger Name",
     "creating": "Konto wird erstellt...",
     "createBtn": "Konto erstellen",
-    "haveAccount": "Haben Sie bereits ein Konto?",
-    "signInHere": "Hier anmelden"
+    "haveAccount": "Sie haben bereits ein Konto?",
+    "signInHere": "Hier anmelden",
+    "country": "Land",
+    "selectCountry": "Wählen Sie Ihr Land"
   },
   "services": {
     "eyebrow": "WAS WIR TUN",
